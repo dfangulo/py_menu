@@ -1,4 +1,4 @@
-import importlib
+import importlib.machinery
 from .option_menu import OptionMenu
 from .page_menu import PageMenu
 from .view_menu import ViewMenu
@@ -99,9 +99,8 @@ class Menu:
         self.functions = functions
 
     def load_functions(self, functions_path) -> None:
-        spec = importlib.util.spec_from_file_location("functions", functions_path)
-        functions_module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(functions_module)
+        loader = importlib.machinery.SourceFileLoader("functions", functions_path)
+        functions_module = loader.load_module()
 
         functions = {}
         for name in dir(functions_module):
