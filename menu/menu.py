@@ -64,6 +64,16 @@ class Menu:
             )
         self.menu_dict[new_page].options.append(new_option)
 
+    # Define una función para agregar las páginas al menú
+    def add_pages_to_menu(self, pages):
+        for page, data in pages.items():
+            self.add_page(
+                new_page=page,
+                header=data["header"],
+                footer=data["footer"],
+                options=data["options"],
+            )
+
     def user_input(self) -> str:
         while True:
             try:
