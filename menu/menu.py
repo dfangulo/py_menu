@@ -51,9 +51,17 @@ class Menu:
         self.menu_dict[new_page] = PageMenu(
             header=header,
             footer=footer,
-            options=[OptionMenu(option[0], option[1], option[2]) for option in options],
+            options=[
+                OptionMenu(index + 1, option[0], option[1])
+                for index, option in enumerate(options)
+            ],
         )
         if new_page == "main_menu":
+            new_option = OptionMenu(
+                len(self.menu_dict[new_page].options) + 1, "quit", "Cerrar Aplicación!"
+            )
+            self.set_menu(menu=self.get_menu(new_page))
+        elif new_page == "login_menu":
             new_option = OptionMenu(
                 len(self.menu_dict[new_page].options) + 1, "quit", "Cerrar Aplicación!"
             )

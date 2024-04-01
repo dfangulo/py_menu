@@ -10,6 +10,6 @@ class OptionMenu:
         -   user_function: La función que se debe de llamar
         -   user_display: Lo que va a decir el menu
     """
-    user_input: int | str
+    user_input: int
     user_function: str
     user_display: str
