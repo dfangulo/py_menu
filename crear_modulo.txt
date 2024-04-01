@@ -1,0 +1,24 @@
+para crear el modulo es con el siguiente comando:
+
+python.exe .\setup.py sdist
+
+contenido del archivo setup.py:
+
+from setuptools import setup, find_packages
+
+
+setup(
+    name='my_menu',
+    version='1.0.1',
+    packages=find_packages(),
+    description='Crear un menu, submenus o llamar funciones, se corrigio el: import importlib.machinery',
+    author='David Angulo',
+    author_email='dfangulo@gmail.com',
+)
+
+
+instalación es:
+pip install path_to\dist\my_menu-1.0.1.tar.gz
+
+desintalar:
+pip unistall my_menu
