@@ -1,13 +1,16 @@
 import importlib.machinery
+from .relative_path import resource_path
 from .option_menu import OptionMenu
 from .page_menu import PageMenu
 from .view_menu import ViewMenu
+
 """
 Desarrollado por: David Angulo
 Colaborador: ChatGPT 3.5, free
 Modulo para crear un menu sencillo
 con una minima configuración.
 """
+
 
 class Menu:
     view_menu = ViewMenu()
@@ -99,7 +102,9 @@ class Menu:
         self.functions = functions
 
     def load_functions(self, functions_path) -> None:
-        loader = importlib.machinery.SourceFileLoader("functions", functions_path)
+        loader = importlib.machinery.SourceFileLoader(
+            "functions", resource_path(functions_path)
+        )
         functions_module = loader.load_module()
 
         functions = {}
